@@ -9,7 +9,7 @@ function getAllDirectors(movies) {
 
 
 // Exercise 2: Get the films of a certain director
-function getMoviesFromDirector(movies, director="Steven Spielberg") {
+function getMoviesFromDirector(movies, director) {
   
   const filmsOf = movies.filter( movie => (movie.director == director)); 
 
@@ -18,22 +18,28 @@ function getMoviesFromDirector(movies, director="Steven Spielberg") {
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
-function moviesAverageOfDirector(movies, director="Steve Spielberg") {
+function moviesAverageOfDirector(movies,director) {
   
-  const filmsOf = getMoviesFromDirector(movies);
+  const filmsOf = getMoviesFromDirector(movies,director);
   const noteTotal = filmsOf.reduce ( ( acc , movie) => {
     return acc += movie.score;
   },0)
 
-  let scoreDir = parseFloat((noteTotal / filmsOf.length).toFixed(2));
-  
+  let scoreDir = Math.round(100*noteTotal/filmsOf.length)/100;
+ 
   console.log("EXERCICE 3 ->", scoreDir)
   return scoreDir;
 }
 
 // Exercise 4:  Alphabetic order by title 
-function orderAlphabetically(array) {
+function orderAlphabetically(movies) {
   
+  const titles = movies.map(movie => movie.title);
+  const orderTitle = titles.sort((titleOne,titleTwo) =>(titleOne < titleTwo) ? -1 : 1 );
+  const twentyMovies = titles.slice(0,20);
+
+  console.log("EXERCICE 4 ->", orderTitle, "20 peliculas:", twentyMovies);
+  return twentyMovies;
 }
 
 // Exercise 5: Order by year, ascending
