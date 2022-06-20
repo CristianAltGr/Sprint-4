@@ -31,7 +31,7 @@ function moviesAverageOfDirector(movies,director) {
   return scoreDir;
 }
 
-//Exercice 3, modificted for working with array (exercie 6)
+//Exercice 3, modificated for working with array (exercice 6)
 
 function moviesAverage(moviesList) {
   
@@ -41,7 +41,7 @@ function moviesAverage(moviesList) {
 
   let scoreDir = Math.round(100*noteTotal/moviesList.length)/100;
  
-  console.log("EXERCICE 3 ->", scoreDir)
+  console.log("EXERCICE 6 mitja score ->", scoreDir)
   return scoreDir;
 }
 
@@ -76,13 +76,20 @@ function orderByYear(movies) {
 }
 
 // Exercise 6: Calculate the average of the movies in a category
-function moviesAverageByCategory() {
+function moviesAverageByCategory(movies, gen = "Crime") {
 
+  const movieList = movies.filter( movie => movie.genre.includes(gen) && movie.score >= 1);// el metodo includes ya devuelve el valor true para incluir en la array
+  let averageGenre = moviesAverage(movieList); 
+  
+  //console.log("note:", averageGenre)
+  return averageGenre; 
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
+function hoursToMinutes(movies) {
+ 
+  
+  
 }
 
 // Exercise 8: Get the best film of a year
