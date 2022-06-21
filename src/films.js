@@ -88,8 +88,35 @@ function moviesAverageByCategory(movies, gen = "Crime") {
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(movies) {
  
-  
-  
+  const timeFilm = []; 
+
+  for (movie of movies){
+    timeFilm.push({...movie}) // Utilizo el operador spread para clonar el objeto ja que me daba error debido a que
+  }                           // estaba copiando la referencia al obj. i no el objeto en sí. otro metodo es
+                              // object.assign pero tiene el problema de que no profundiza i por lo tanto en el 
+                              // array genre copiaria solo el primer valor.       
+  for(film of timeFilm){
+    changeDuration(film)
+  }
+
+  console.log( "EXERCICE 7 ->", timeFilm);
+
+  return timeFilm;
+}
+
+function changeDuration(film){
+
+  let hourText= film.duration.match(/\d+h/g); // metod match returns array
+  let minText= film.duration.match(/\d+min/g);
+  let hour = parseFloat(hourText[0].slice(0,-1)); // char h element are at the last position always.
+  let min = 0;
+
+  if( minText != null){
+    min = parseFloat(minText[0].slice(0,-3));
+  }
+
+  film.duration = (hour*60)+min
+  return film;
 }
 
 // Exercise 8: Get the best film of a year
