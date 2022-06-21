@@ -27,7 +27,7 @@ function moviesAverageOfDirector(movies,director) {
 
   let scoreDir = Math.round(100*noteTotal/filmsOf.length)/100;
  
-  console.log("EXERCICE 3 ->", scoreDir)
+  //console.log("EXERCICE 3 ->", scoreDir)
   return scoreDir;
 }
 
@@ -41,7 +41,7 @@ function moviesAverage(moviesList) {
 
   let scoreDir = Math.round(100*noteTotal/moviesList.length)/100;
  
-  console.log("EXERCICE 6 mitja score ->", scoreDir)
+  //console.log("EXERCICE 6 mitja score ->", scoreDir)
   return scoreDir;
 }
 
@@ -91,7 +91,7 @@ function hoursToMinutes(movies) {
   const timeFilm = []; 
 
   for (movie of movies){
-    timeFilm.push({...movie}) // Utilizo el operador spread para clonar el objeto ja que me daba error debido a que
+    timeFilm.push({...movie}) // Utilizo el operador spread para clonar el objeto ya que me daba error debido a que
   }                           // estaba copiando la referencia al obj. i no el objeto en sí. otro metodo es
                               // object.assign pero tiene el problema de que no profundiza i por lo tanto en el 
                               // array genre copiaria solo el primer valor.       
@@ -99,7 +99,7 @@ function hoursToMinutes(movies) {
     changeDuration(film)
   }
 
-  console.log( "EXERCICE 7 ->", timeFilm);
+  //console.log( "EXERCICE 7 ->", timeFilm);
 
   return timeFilm;
 }
@@ -120,8 +120,25 @@ function changeDuration(film){
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(movies) {
+
+  const listFilms = orderByYear(movies);
+  const bestFilms = [];
+
+  for(let i=1921; i<=2022;i++){
+    
+    const movieYear = listFilms.filter( movie => movie.year == i)
+        
+    if(movieYear.length > 0){
+      
+      movieYear.sort((movieOne,movieTwo) =>(movieOne.score > movieTwo.score) ? -1 : 1 );
+      bestFilms.push(movieYear[0]);
+    }
+  }
+
+  //console.log("Exercice 8 ->",bestFilms);
+
+  return bestFilms;  
 }
 
 
